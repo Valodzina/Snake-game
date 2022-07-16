@@ -154,5 +154,10 @@ function getRandom(max) {
 
     return Math.floor(Math.random() * (max - 0)) + 0;
 }
-//todo rewrite in functions/classes
+//todo rewrite in functions / classes
 //todo change speed looking at score ???
+//todo working buttons
+//todo add w a s d ??
+//todo stop when fail ??
+//todo design
+//todo generate new position not on snake
