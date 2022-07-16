@@ -94,9 +94,11 @@ function drawSnake() {
     }
 
     if (apple[0] == snake[0][0] && apple[1] == snake[0][1]) {
-        apple = [getRandom(cellInRow), getRandom(cellInCol)]
+
         scoreh3.textContent = ++score;
-        //todo generate new position not on snake
+        do {
+            apple = [getRandom(cellInRow), getRandom(cellInCol)]
+        } while (isInArray(apple, snake))
     } else {
         snake.pop();
     }
@@ -164,4 +166,13 @@ function getRandom(max) {
 //todo working buttons
 //todo stop when fail ??
 //todo design
-//todo generate new position not on snake
+
+function isInArray(el, array) {
+    for (let i = 0; i < array.length; i++) {
+
+        if (el[0] == array[i][0] && el[1] == array[i][1]) {
+            return true
+        }
+    }
+    return false
+}
