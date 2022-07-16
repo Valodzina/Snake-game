@@ -20,11 +20,12 @@ let snake = [
 ]
 let apple = [getRandom(cellInRow), getRandom(cellInCol)]
 let k = 0;
+let speed = 10;
 
 function gameLoop() {
     requestAnimationFrame(gameLoop);
     k++
-    if (k < 8) {
+    if (k < speed) {
         return
     }
     k = 0;
@@ -43,7 +44,8 @@ function restartGame() {
     apple = [getRandom(cellInRow), getRandom(cellInCol)]
     score = 0;
     scoreh3.textContent = 0;
-    way = 1;
+    way = 2;
+    speed = 10
 
 }
 
@@ -96,6 +98,10 @@ function drawSnake() {
     if (apple[0] == snake[0][0] && apple[1] == snake[0][1]) {
 
         scoreh3.textContent = ++score;
+        if (score % 10 == 0) {
+            speed--;
+            console.log(speed)
+        }
         do {
             apple = [getRandom(cellInRow), getRandom(cellInCol)]
         } while (isInArray(apple, snake))
@@ -162,7 +168,6 @@ function getRandom(max) {
     return Math.floor(Math.random() * (max - 0)) + 0;
 }
 //todo rewrite in functions / classes
-//todo change speed looking at score ???
 //todo working buttons
 //todo stop when fail ??
 //todo design
