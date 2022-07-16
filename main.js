@@ -119,25 +119,30 @@ function drawSnake() {
 
 
 document.addEventListener('keydown', (event) => {
+    console.log(event.code)
     switch (event.code) {
         case "ArrowUp":
+        case "KeyW":
             if (way !== 3) {
                 way = 1;
             }
             break;
 
         case "ArrowRight":
+        case "KeyD":
             if (way !== 4) {
                 way = 2;
             }
             break;
         case "ArrowDown":
+        case "KeyS":
             if (way !== 1) {
                 way = 3;
             }
             break;
 
         case "ArrowLeft":
+        case "KeyA":
             if (way !== 2) {
                 way = 4;
             }
@@ -157,7 +162,6 @@ function getRandom(max) {
 //todo rewrite in functions / classes
 //todo change speed looking at score ???
 //todo working buttons
-//todo add w a s d ??
 //todo stop when fail ??
 //todo design
 //todo generate new position not on snake
