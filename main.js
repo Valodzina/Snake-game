@@ -110,10 +110,10 @@ function drawSnake() {
     }
 
     ctx.beginPath();
-    ctx.fillStyle = '#B69CEA';
+    ctx.fillStyle = '#309224';
     ctx.fillRect(snake[0][0] * cellSize, snake[0][1] * cellSize, cellSize, cellSize)
 
-    ctx.fillStyle = '#954FB6';
+    ctx.fillStyle = '#52DE41';
     for (let i = 1; i < snake.length; i++) {
         ctx.fillRect(snake[i][0] * cellSize, snake[i][1] * cellSize, cellSize, cellSize)
         if (snake[0][0] == snake[i][0] && snake[0][1] == snake[i][1]) {
@@ -168,7 +168,6 @@ function getRandom(max) {
     return Math.floor(Math.random() * (max - 0)) + 0;
 }
 //todo rewrite in functions / classes
-//todo working buttons
 //todo stop when fail ??
 //todo design
 
@@ -181,3 +180,34 @@ function isInArray(el, array) {
     }
     return false
 }
+
+
+let leftBtn = document.getElementById('left');
+let upBtn = document.getElementById('up');
+let downBtn = document.getElementById('down');
+let rightBtn = document.getElementById('right');
+
+leftBtn.addEventListener('click', () => {
+    if (way !== 2) {
+        way = 4;
+    }
+
+})
+upBtn.addEventListener('click', () => {
+    if (way !== 3) {
+        way = 1;
+    }
+
+})
+downBtn.addEventListener('click', () => {
+    if (way !== 1) {
+        way = 3;
+    }
+
+})
+rightBtn.addEventListener('click', () => {
+    if (way !== 4) {
+        way = 2;
+    }
+
+})
