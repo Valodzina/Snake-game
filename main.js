@@ -11,7 +11,7 @@ canvas.setAttribute('width', canvasWidth);
 canvas.setAttribute('height', canvasHeight);
 var ctx = canvas.getContext('2d');
 let way = 2;
-
+let thisloop = true;
 
 let snake = [
     [0, 0],
@@ -19,21 +19,23 @@ let snake = [
     [0, -2]
 ]
 let apple = [getRandom(cellInRow), getRandom(cellInCol)]
-let k = 0;
+let k = 1;
 let speed = 10;
 
 function gameLoop() {
-    requestAnimationFrame(gameLoop);
-    k++
-    if (k < speed) {
-        return
-    }
-    k = 0;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawApple();
-    drawSnake();
+    setTimeout(() => {
+        requestAnimationFrame(gameLoop);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawApple();
+        drawSnake();
+
+    }, 350 / k);
 }
+
 requestAnimationFrame(gameLoop);
+
+
 
 function restartGame() {
     snake = [
@@ -46,6 +48,7 @@ function restartGame() {
     scoreh3.textContent = 0;
     way = 2;
     speed = 10
+    k = 1
 
 }
 
@@ -99,10 +102,11 @@ function drawSnake() {
     if (apple[0] == snake[0][0] && apple[1] == snake[0][1]) {
 
         scoreh3.textContent = ++score;
-        if (score % 10 == 0) {
-            speed--;
-            console.log(speed)
-        }
+        // if (score % 10 == 0) {
+        k += 0.1
+            // speed--;
+            // console.log(speed)
+            // }
         do {
             apple = [getRandom(cellInRow), getRandom(cellInCol)]
         } while (isInArray(apple, snake))
@@ -129,45 +133,52 @@ function drawSnake() {
         }
     }
     ctx.fill();
+    thisloop = true;
 }
 
 
 
 
 document.addEventListener('keydown', (event) => {
-    console.log(event.code)
-    switch (event.code) {
-        case "ArrowUp":
-        case "KeyW":
-            if (way !== 3) {
-                way = 1;
-            }
-            break;
+    // console.log(event.code);
+    if (thisloop) {
+        thisloop = false;
+        switch (event.code) {
 
-        case "ArrowRight":
-        case "KeyD":
-            if (way !== 4) {
-                way = 2;
-            }
-            break;
-        case "ArrowDown":
-        case "KeyS":
-            if (way !== 1) {
-                way = 3;
-            }
-            break;
+            case "ArrowUp":
+            case "KeyW":
+                if (way !== 3) {
+                    way = 1;
 
-        case "ArrowLeft":
-        case "KeyA":
-            if (way !== 2) {
-                way = 4;
-            }
-            break;
+                }
+                break;
 
-        default:
-            break;
+            case "ArrowRight":
+            case "KeyD":
+                if (way !== 4) {
+                    way = 2;
+                }
+                break;
+            case "ArrowDown":
+            case "KeyS":
+                if (way !== 1) {
+                    way = 3;
+                }
+                break;
 
+            case "ArrowLeft":
+            case "KeyA":
+                if (way !== 2) {
+                    way = 4;
+                }
+                break;
+
+            default:
+                break;
+
+        }
     }
+
 });
 
 
