@@ -3,39 +3,55 @@
     margin: 0;
     font-size: 20px;
     font-style: normal;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inconsolata', monospace;
+    color: #FFF;
+}
+
+.body {
+    background-color: #6C5990;
 }
 
 .main {
     margin: 0 auto;
     width: 600px;
-    background-color: aquamarine;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#game-canvas {
-    border: 1px #458900 solid;
-    background-image: url(cell.png);
-    background-repeat: repeat;
+.score {
+    width: 40px;
+    background-color: #D8D654;
+    border: 2px #C0AD24 solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
 }
 
-.snake-cell {
-    width: 20px;
-    height: 20px;
-    background-color: #319dd3;
+#game-canvas {
+    background-image: url(cell.png);
+    background-repeat: repeat;
 }
 
 .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 20px;
 }
 
 .button {
     width: 50px;
     height: 50px;
-    background-color: cadetblue;
-    border: 1px #458900 solid;
+    background-color: #D8D654;
+    border: 2px #C0AD24 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
 }

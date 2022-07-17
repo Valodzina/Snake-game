@@ -54,7 +54,8 @@ function restartGame() {
 
 function drawApple() {
     ctx.beginPath();
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = '#FFF';
+    ctx.strokeStyle = 'white';
     ctx.arc(apple[0] * cellSize + (10), apple[1] * cellSize + (10), 8, 0, 2 * Math.PI);
     ctx.fill();
 }
@@ -110,12 +111,19 @@ function drawSnake() {
     }
 
     ctx.beginPath();
-    ctx.fillStyle = '#309224';
-    ctx.fillRect(snake[0][0] * cellSize, snake[0][1] * cellSize, cellSize, cellSize)
+    // ctx.fillStyle = '#309224';
 
-    ctx.fillStyle = '#52DE41';
+    ctx.fillStyle = '#1DC30C';
+    ctx.strokeStyle = '#5DC414';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(snake[0][0] * cellSize + 2, snake[0][1] * cellSize + 2, cellSize - 4, cellSize - 4)
+    ctx.fillRect(snake[0][0] * cellSize + 6, snake[0][1] * cellSize + 6, cellSize - 12, cellSize - 12)
+    ctx.fillStyle = '#D8D654';
+    ctx.strokeStyle = '#5DC414';
+
     for (let i = 1; i < snake.length; i++) {
-        ctx.fillRect(snake[i][0] * cellSize, snake[i][1] * cellSize, cellSize, cellSize)
+        ctx.strokeRect(snake[i][0] * cellSize + 2, snake[i][1] * cellSize + 2, cellSize - 4, cellSize - 4)
+        ctx.fillRect(snake[i][0] * cellSize + 6, snake[i][1] * cellSize + 6, cellSize - 12, cellSize - 12)
         if (snake[0][0] == snake[i][0] && snake[0][1] == snake[i][1]) {
             restartGame();
         }
@@ -169,7 +177,6 @@ function getRandom(max) {
 }
 //todo rewrite in functions / classes
 //todo stop when fail ??
-//todo design
 
 function isInArray(el, array) {
     for (let i = 0; i < array.length; i++) {
@@ -209,5 +216,4 @@ rightBtn.addEventListener('click', () => {
     if (way !== 4) {
         way = 2;
     }
-
 })
